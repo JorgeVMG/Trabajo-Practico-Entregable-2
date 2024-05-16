@@ -1,6 +1,5 @@
 <?php
 include "viaje.php";
-
 include_once "pasajero.php";
 function menu(){
     echo "\n1-Cargar la informacion del viaje\n2-Modificar Viaje\n3-Ingresar Pasajeros\n4-Modificar Pasajero\n5-Ver los datos\n6-mostrar lista de pasajeros\n7-salir\n";
