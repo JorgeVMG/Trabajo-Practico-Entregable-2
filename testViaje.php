@@ -80,7 +80,7 @@ do{
                     $tipo = trim(fgets(STDIN));
                     switch($tipo){
                         case 1:
-                            $objPasajero = new pasajero($nom,$apel,$DNI,$telf,$nroAsient,$nroTicket);
+                            $objPasajero = new Pasajero($nom,$apel,$DNI,$telf,$nroAsient,$nroTicket);
                             break;
                         case 2:
                             echo "Numero de viajes Frecuentes: ";

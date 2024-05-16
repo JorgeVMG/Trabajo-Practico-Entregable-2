@@ -1,5 +1,5 @@
 <?php
-include "pasajero.php";
+include_once "pasajero.php";
 include "pasajeroVIP.php";
 include "pasajeroNecesidades.php";
 /**La empresa de Transporte de Pasajeros “Viaje Feliz” quiere registrar la información referente a sus viajes. 

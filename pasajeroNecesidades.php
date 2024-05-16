@@ -1,6 +1,6 @@
 <?php
-include "pasajero.php";
-class PasajeroNecesidades extends pasajero{
+include_once "pasajero.php";
+class PasajeroNecesidades extends Pasajero{
     private $tipoNecesitades;
     public function __construct($nom,$apel,$numDoc,$telf,$nroAsie,$nroTick,$tipNece){
         parent::__construct($nom,$apel,$numDoc,$telf,$nroAsie,$nroTick);

@@ -1,6 +1,6 @@
 <?php
-include "pasajero.php";
-class PasajeroVIP extends pasajero{
+include_once "pasajero.php";
+class PasajeroVIP extends Pasajero{
     private $nroFrecuencia;
     private $millas;
 

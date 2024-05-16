@@ -1,5 +1,5 @@
 <?php
-class pasajero{
+class Pasajero{
     private $nombre;
     private $apellido;
     private $numeroDocumento;
