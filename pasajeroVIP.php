@@ -1,6 +1,6 @@
 <?php
 include "pasajero.php";
-class PasajeroVIP extends Pasajero{
+class PasajeroVIP extends pasajero{
     private $nroFrecuencia;
     private $millas;
 
@@ -24,5 +24,13 @@ class PasajeroVIP extends Pasajero{
     public function __toString(){
         $cad = parent:: __toString();
         $cad .= "Numero de Frecuencia: ".$this->getNroFrecuencia()."\nMillas recorido: ".$this->getMillas();
+    }
+    public function darPorcentajeIncremento(){
+        if($this->getMillas()>300){
+            $porcentaje = 30;
+        }else{
+            $porcentaje = 35;
+        }
+        return $porcentaje;
     }
 }

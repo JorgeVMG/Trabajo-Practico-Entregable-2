@@ -1,5 +1,5 @@
 <?php
-class Pasajero{
+class pasajero{
     private $nombre;
     private $apellido;
     private $numeroDocumento;
@@ -52,6 +52,11 @@ class Pasajero{
         $this->nroTicket = $nroTick;
     }
     public function __toString(){
-        return "Pasajero: ".$this->getNombre()."\nNumero de Asiento: ".$this->getNroAsiento()."\nNunmero de Ticket: ".$this->getNroTicket();
+        return "Nombre y Apellido: ".$this->getNombre()." ".$this->getApellido()."\nDNI: ".$this->getNumeroDocumento()."\nTelefono: ".$this->getTelefono().
+            "\nNumero de Asiento: ".$this->getNroAsiento()."\nNunmero de Ticket: ".$this->getNroTicket();
+    }
+    public function darPorcentajeIncremento(){
+        $porcentaje = 10;
+        return $porcentaje;
     }
 }
