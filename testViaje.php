@@ -10,11 +10,8 @@ $dest = "";
 $costo = 0;
 $objResponsable = "";
 $cantMax = 0;
-$objPasajero1 = new PasajeroVIP("juan","burgos",23,23,23,23,232,4000);
-$objPasajero2 = new Pasajero("lucas","burgos",2442,2332,233,23);
-$objPasajero3 = new PasajeroNecesidades("lucas","gonza",244223322,2332,233,23,["silla","asitencias"]);
-$colecPasajeros = [$objPasajero1,$objPasajero2,$objPasajero3];
-$objViaje = new viaje(1213,"buenos aires",20,$objResponsable,3,$colecPasajeros);
+$colecPasajeros = [];
+$objViaje = new viaje($codVia,$dest,$costo,$objResponsable,$cantMax,$colecPasajeros);
 
 echo "Bienvenidos a VIAJE FELIZ\n";
 echo "¿Qué desea hacer?\n";
