@@ -53,8 +53,16 @@ class Pasajero{
     }
     public function __toString(){
         return "Nombre y Apellido: ".$this->getNombre()." ".$this->getApellido()."\nDNI: ".$this->getNumeroDocumento()."\nTelefono: ".$this->getTelefono().
-            "\nNumero de Asiento: ".$this->getNroAsiento()."\nNunmero de Ticket: ".$this->getNroTicket();
+            "\nNumero de Asiento: ".$this->getNroAsiento()."\nNunmero de Ticket: ".$this->getNroTicket()."\n";
     }
+    public function modificar($nuevoNom, $nuevoApe, $nuevoTele,$nuevoAsiento,$nuevoTicket){
+        $this->setNombre($nuevoNom);
+        $this->setApellido($nuevoApe);
+        $this->setTelefono($nuevoTele);
+        $this->setNroAsiento($nuevoAsiento);
+        $this->setNroTicket($nuevoTicket);
+    }
+
     public function darPorcentajeIncremento(){
         $porcentaje = 10;
         return $porcentaje;

@@ -23,7 +23,8 @@ class PasajeroVIP extends Pasajero{
     }
     public function __toString(){
         $cad = parent:: __toString();
-        $cad .= "Numero de Frecuencia: ".$this->getNroFrecuencia()."\nMillas recorido: ".$this->getMillas();
+        $cad .= "Numero de Frecuencia: ".$this->getNroFrecuencia()."\nMillas recorido: ".$this->getMillas()."\n";
+        return $cad;
     }
     public function darPorcentajeIncremento(){
         if($this->getMillas()>300){

@@ -66,34 +66,38 @@ class viaje{
     }
     public function retornaPasajeros(){
         $cad = "";
-        for ($i=0;$i>count($this->getColcPasajeros());$i++){
-            $cad .= "Pasajero ".($i+1).": \n".$this->getColcPasajeros()[$i];
+        foreach ($this->getColcPasajeros() as $i => $pasajero){
+            $cad .= "-------------------------------------\nPasajero ".($i+1).":\n".$pasajero;
         }
         return $cad;
     }
     public function __toString(){
         return "Codigo de viaje: ".$this->getCodigoViaje()."\nDestino: ".$this->getDestino()."\nCosto del Viaje:".$this->getCostoViaje().
-        "\nResponsable: ".$this->getResponsable()."\nCantidad maxima de pasajeros: ".$this->getCantidadMaxPasajeros()."\nPasajeros: ".$this->retornaPasajeros();
+        "\nResponsable: ".$this->getResponsable()."\nCantidad maxima de pasajeros: ".$this->getCantidadMaxPasajeros()."\nPasajeros: \n".$this->retornaPasajeros();
     }
     public function pasajeroExistente($objPasajero){
         $encontrado = false;
         $i = 0;
         if (count($this->getColcPasajeros())>0){
             do{
-                if($this->getColcPasajeros()[$i]==$objPasajero){
+                if($this->getColcPasajeros()[$i]->getNumeroDocumento()==$objPasajero->getNumeroDocumento()){
                     $encontrado = true;
                 }
+                $i++;
             }while($i<count($this->getColcPasajeros())&&$encontrado == false);
         }
         return $encontrado; 
     }
     public function agregarPasajero($objPasajero){
-        if($this->pasajeroExistente($objPasajero)==false){
-            $colecPasajeros = $this->getColcPasajeros();
+        $agregado = false;
+        $colecPasajeros = $this->getColcPasajeros();
+        if($this->pasajeroExistente($objPasajero) == false){
             $i= count($this->getColcPasajeros());
             $colecPasajeros[$i] = $objPasajero;
             $this->setColcPasajeros($colecPasajeros);
+            $agregado = true;
         }
+        return $agregado;
     }
     public function cambiarResponsable($objResponsable){
         $respuesta = $this->getResponsable() != $objResponsable;
@@ -103,7 +107,7 @@ class viaje{
         return $respuesta;
     }
     public function hayPasajesDisponible(){
-        if( $this->getColcPasajeros()<$this->getCantidadMaxPasajeros()){
+        if( count($this->getColcPasajeros()) < $this->getCantidadMaxPasajeros()){
             $respuesta = true;
         }else{
             $respuesta = false;
@@ -111,12 +115,21 @@ class viaje{
         return $respuesta;
     }
     public function venderPasaje($objPasajero){
-        $precioFinal = -1;
+        $precioFinal = 0;
         if($this->hayPasajesDisponible()){
-            $porcentaje = $objPasajero->darPorcentajeIncremento();
-            $precioFinal = $this->getCostoViaje()+(($this->getCostoViaje()*$porcentaje)/100);
-            $this->agregarPasajero($objPasajero);
+            if($this->agregarPasajero($objPasajero)){
+                $porcentaje = $objPasajero->darPorcentajeIncremento();
+                $precioFinal = $this->getCostoViaje()+(($this->getCostoViaje()*$porcentaje)/100);
+            }
         }
         return $precioFinal;
+    }
+    public function montoTotalPortodosPasajero(){
+        $costoTotal=0;
+        foreach($this->getColcPasajeros() as $unPasajero){
+            $porcentaje=$unPasajero->darPorcentajeIncremento();
+            $costoTotal+=$this->getCostoViaje()+(($this->getCostoViaje()*$porcentaje)/100);
+            }
+        return $costoTotal;
     }
 }

@@ -12,9 +12,16 @@ class PasajeroNecesidades extends Pasajero{
     public function setTipoNecesidades($tipNece){
         $this->tipoNecesitades = $tipNece;
     }
+    public function retornarNecesidades(){
+        $cad = "\n";
+        foreach($this->getTipoNecesidades() as $necesidad){
+            $cad .= "-".$necesidad."\n";
+        }
+        return $cad;
+    }
     public function __toString(){
         $cad = parent:: __toString();
-        $cad .= "Tipo de necesidad: ".$this->getTipoNecesidades(); 
+        $cad .= "Tipo de necesidad: ".$this->retornarNecesidades(); 
         return $cad;
     }
     public function darPorcentajeIncremento(){
